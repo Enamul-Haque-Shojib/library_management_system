@@ -1,0 +1,18 @@
+.banner-page{
+    width: 100vh;
+    height: 90vh;
+}
+
+.banner-image{
+    width: 600px;
+    height: 400px;
+}
+
+.banner-image img{
+    width: 100%;
+    height: 100%;
+  
+}
+
+
+

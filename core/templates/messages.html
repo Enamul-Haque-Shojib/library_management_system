@@ -1,0 +1,14 @@
+<div>
+
+
+    {% if messages %}
+      {% for m in messages %}
+      <h4 {% if m.tags %} class="bg-{{m.tags}} text-white p-3" {% endif %}>{{m}}</h4>
+      {% endfor %}
+    {% endif %}
+
+
+      {% block content %}
+      {% endblock %}
+
+  </div>

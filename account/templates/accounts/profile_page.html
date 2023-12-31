@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% block head_title %}Profile{% endblock %}
+{% block content %}
+
+    
+
+    <div>
+        <h3 class="text-center mb-5">Borrowed books {{profilebooklist | length}}</h3>
+    </div>
+
+
+    {% if profilebooklist %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Transaction Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Price</th>
+          <th scope="col">After TRNS Balance</th>
+          <th scope="col">Date</th>
+          <th scope="col">Return the book</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in profilebooklist %}
+        <tr>
+          <th scope="row">{{book.id}}</th>
+          <td><a href="{% url 'profilebook_details' book.bookid %}">{{book.title}}</a></td>
+          <td>{{book.category}}</td>
+          <td>{{book.price}}</td>
+          <td>{{book.balance_after_transaction}}</td>
+          <td>{{book.borrowed_on}}</td>
+          <td><a href="{% url 'returnbook' book.id%}">Return Pay</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <h1 class="text-center">Empty Borrowd List</h1>
+    {% endif %}
+    
+  
+    
+    
+    
+{% endblock %}
