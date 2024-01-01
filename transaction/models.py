@@ -15,4 +15,4 @@ class Transaction(models.Model):
         ordering = ['timestamp'] 
 
     def __str__(self):
-        return self.id
+        return str(self.id)

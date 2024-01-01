@@ -14,7 +14,7 @@ class Book(models.Model):
     image = models.ImageField(upload_to = 'uploads', blank = True, null = True)
 
     def __str__(self):
-        return self.title
+        return str(self.title)
     
 
 class ProfileBook(models.Model):
@@ -32,7 +32,7 @@ class ProfileBook(models.Model):
    
 
     def __str__(self):
-        return self.title
+        return str(self.title)
     
 
 class Review(models.Model):
