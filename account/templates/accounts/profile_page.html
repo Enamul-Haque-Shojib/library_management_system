@@ -1,8 +1,38 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% load crispy_forms_tags %}
 {% block head_title %}Profile{% endblock %}
 {% block content %}
+
+<div class="w-100 d-flex flex-column justify-content-center align-items-center">
+  <h1 class="center">Profile</h1>
+  <div class="card mb-3 " style="max-width: 1000px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{% static 'images/profile.png' %}" class="img-fluid rounded-start" alt="...">
+        <h5 class="card-title">User Name: {{request.user.username}}</h5>
+        <h5 class="card-text"> Account No: {{request.user.account.account_no}}</h5>
+        <h5 class="card-text"> Balance: ${{request.user.account.balance}}</h5>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+         
+          <p class="card-text">First Name: {{request.user.first_name}}</p>
+          <p class="card-text">Last Name: {{request.user.last_name}}</p>
+          <p class="card-text"> Email: {{request.user.email}}</p>
+          <p class="card-text"> Date of Birth: {{request.user.account.birth_date}}</p>
+          <p class="card-text"> Gender: {{request.user.account.gender}}</p>
+          <p class="card-text"> Address: {{request.user.address.street_address}}</p>
+          <p class="card-text"> City: {{request.user.address.city}}</p>
+          <p class="card-text"> Postal Code: {{request.user.address.postal_code}}</p>
+          <p class="card-text"> Country: {{request.user.address.country}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
     
 
@@ -11,36 +41,39 @@
     </div>
 
 
-    {% if profilebooklist %}
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Transaction Id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Category</th>
-          <th scope="col">Price</th>
-          <th scope="col">After TRNS Balance</th>
-          <th scope="col">Date</th>
-          <th scope="col">Return the book</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for book in profilebooklist %}
-        <tr>
-          <th scope="row">{{book.id}}</th>
-          <td><a href="{% url 'profilebook_details' book.bookid %}">{{book.title}}</a></td>
-          <td>{{book.category}}</td>
-          <td>{{book.price}}</td>
-          <td>{{book.balance_after_transaction}}</td>
-          <td>{{book.borrowed_on}}</td>
-          <td><a href="{% url 'returnbook' book.id%}">Return Pay</a></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    {% else %}
-      <h1 class="text-center">Empty Borrowd List</h1>
-    {% endif %}
+    <div class="border mb-5">
+      {% if profilebooklist %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Transaction Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Price</th>
+            <th scope="col">After TRNS Balance</th>
+            <th scope="col">Date</th>
+            <th scope="col">Return the book</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in profilebooklist %}
+          <tr>
+            <th scope="row">{{book.id}}</th>
+            <td><a href="{% url 'profilebook_details' book.bookid %}">{{book.title}}</a></td>
+            <td>{{book.category}}</td>
+            <td>{{book.price}}</td>
+            <td>{{book.balance_after_transaction}}</td>
+            <td>{{book.borrowed_on}}</td>
+            <td><a href="{% url 'returnbook' book.id%}">Return Pay</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+        <h1 class="text-center m-5">Empty Borrowd List</h1>
+      {% endif %}
+    </div>
+   
     
   
     
