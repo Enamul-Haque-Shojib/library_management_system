@@ -34,6 +34,7 @@
       <div class="my-5">
         <div class="card-body">
           <h5 class="my-3">Total Reviews : {{reviews | length}}</h5>
+          
             {% for review in reviews %}
             <div class="border p-3 mt-2">
             <p><span class="fw-bold">{{review.author.first_name}} {{review.author.last_name}}</span> {{review.created_on}}</p>
