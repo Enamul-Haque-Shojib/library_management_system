@@ -120,6 +120,8 @@ DATABASES = {
     )
 }
 
+CSRF_TRUSTED_ORIGINS = ['https://library-management-system-9xy5.onrender.com','https://*.127.0.0.1']
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
